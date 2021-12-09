@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Stocks</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    </head>
+    <style>
+        body {
+            padding: 20px 20px;
+            font-family: verdana;
+            background-color: #d9ead3;
+        }
+        h1 {text-align: center}
+        h2 {text-align: center; font-weight: bold}
+        .form {
+            text-align: center;
+            line-height: 1.8;
+        }
+    </style>
+    <body>
+        <h1>Stock Ticker Web App</h1>
+        <h2>Please enter a company name or stock ticker: </h2>
+        <div class="form">
+            <form name="inputform"  action='http://localhost:8080/process' method="post" onsubmit="return validate()">
+                Company Name: <input type="text" name="company" value=""><br>
+                Stock Ticker: <input type="text" name="ticker" value=""><br>
+                <input type="submit" name="" value="Search">
+            </form>
+        </div>
+        
+        <script language='javascript'>
+        function validate() {
+            if (document.forms["inputform"]["ticker"].value =="" && document.forms["inputform"]["company"].value == "") 
+            {
+                alert("Please enter a company name or stock ticker");
+                document.forms["inputform"]["company"].focus();
+                return false;
+            }
+            
+            if (document.forms["inputform"]["ticker"].value != "" && document.forms["inputform"]["company"].value != "") {
+                alert("Please only enter a search in one of the fields: company name or stock ticker");
+                document.forms["inputform"]["ticker"].focus();
+                document.forms["inputform"]["ticker"].select();
+                return false;
+            }
+            
+            
+        }
+
+
+            
+        </script>
+    
+        
+    </body>
+</html>
